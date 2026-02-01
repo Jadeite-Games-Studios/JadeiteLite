@@ -3,7 +3,7 @@
 
 **Jadeite Lite** is a lightweight starter application built on the **Jadeite 2D Game Engine**, designed specifically for tutorials, experimentation, and rapid feature development.
 
-It provides a clean, stable baseline so you can focus entirely on the topic being taught — without rebuilding windowing, rendering, or tooling boilerplate every time.
+It provides a clean, stable baseline so you can focus entirely on the topic being taught â€” without rebuilding windowing, rendering, or tooling boilerplate every time.
 
 ---
 
@@ -102,4 +102,4 @@ Exact dependency versions are defined in the build configuration.
 ## License
 
 This project is licensed under the JGS License.
-See the `JGS_LICENSE` file for details.
+See the `LICENSE` file for details.
