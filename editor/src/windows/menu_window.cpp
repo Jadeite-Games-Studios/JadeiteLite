@@ -84,11 +84,11 @@ void MenuWindow::Draw()
                     "The goal of this is to handle basic boiler plater code for applications to "
                     "expand as needed to teach new topics and learn more about C++ "
                     "Programming." );
-                ImGui::Text( "By Dustin Clark and all contributors." );
+                ImGui::Text( "By Dustin Clark @ JADEite Games Studios and all contributors." );
                 ImGui::AddSpaces( 2 );
 
                 ImGui::SeparatorText( "Helpful Links: " );
-                ImGui::TextLinkOpenURL( "Github", "TODO: Provide Link" );
+                ImGui::TextLinkOpenURL( "Github", "https://github.com/Jadeite-Games-Studios/JadeiteLite" );
                 ImGui::TextLinkOpenURL( "YouTube", "https://www.youtube.com/@JADE-iteGames" );
                 ImGui::Separator();
                 ImGui::TreePop();
