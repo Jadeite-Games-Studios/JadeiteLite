@@ -1,0 +1,115 @@
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++20
+
+# ---------------------------------------
+# Braces & Blocks (Allman)
+# ---------------------------------------
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+
+# ---------------------------------------
+# Indentation
+# ---------------------------------------
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+
+NamespaceIndentation: None
+
+# ---------------------------------------
+# Spacing
+# ---------------------------------------
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesInParentheses: true
+SpacesInAngles: false
+SpacesInContainerLiterals: true
+SpacesInSquareBrackets: true
+SpaceAfterCStyleCast: true
+
+# if ( x ), while ( y )
+SpacesInConditionalStatement: true
+
+# ---------------------------------------
+# Line Breaking
+# ---------------------------------------
+ColumnLimit: 100
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: true
+BreakStringLiterals: true
+
+# ---------------------------------------
+# Templates (readability first)
+# ---------------------------------------
+AlwaysBreakTemplateDeclarations: Yes
+PenaltyBreakTemplateDeclaration: 0
+
+# ---------------------------------------
+# Function Formatting
+# ---------------------------------------
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AlwaysBreakAfterReturnType: None
+
+# ---------------------------------------
+# Classes & Structs
+# ---------------------------------------
+SortIncludes: false
+SortUsingDeclarations: false
+EmptyLineBeforeAccessModifier: Always
+Cpp11BracedListStyle: false
+
+# ---------------------------------------
+# Namespaces
+# ---------------------------------------
+FixNamespaceComments: true
+CompactNamespaces: false
+
+# ---------------------------------------
+# Pointer & Reference Alignment
+# ---------------------------------------
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# ---------------------------------------
+# Comments
+# ---------------------------------------
+ReflowComments: true
+AlignTrailingComments: true
+MaxEmptyLinesToKeep: 1
+
+# ---------------------------------------
+# Misc
+# ---------------------------------------
+DerivePointerAlignment: false
+IndentPPDirectives: None
+PPIndentWidth: 0
+AlignEscapedNewlines: Left
+
+
+# ---------------------------------------
+# Function arguments / parameters
+# ---------------------------------------
+BinPackArguments: true
+BinPackParameters: true
+
+#PenaltyBreakBeforeFirstCallParameter: 300
+#PenaltyBreakParameter: 200
+#PenaltyExcessCharacter: 1000000
