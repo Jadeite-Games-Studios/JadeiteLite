@@ -88,14 +88,40 @@ Jadeite Starter is used as the foundation for tutorials covering topics such as:
 
 ---
 
-## Requirements
+# Build
+----
+Requires [CMake 3.26](https://cmake.org/) and [vcpkg](https://github.com/microsoft/vcpkg)
+## Get VCPKG:
+```ps
+git clone https://github.com/microsoft/vcpkg
+./vcpkg/bootstrap-vcpkg.bat -disableMetrics
+```
+### Make sure the following environment variables are set:
+- Windows
+```
+VCPKG_ROOT=[path_to_vcpkg]
+VCPKG_DEFAULT_TRIPLET=x64-windows
+```
+- Linux
+Edit your profile's bashrc file:
+```
+nano ~/.bashrc
+```
+Add the following lines at the end:
+```
+export PATH=<path_to_vcpkg_installation_folder>:$PATH
+export VCPKG_ROOT=<path_to_vcpkg_installation_folder>
+export VCPKG_DEFAULT_TRIPLET=x64-linux
+```
+Apply changes:
+```
+source ~/.bashrc
+```
 
-- C++23
-- SDL2
-- OpenGL 4.5
-- ImGui
-
-Exact dependency versions are defined in the build configuration.
+## Install Dependencies
+```
+vcpkg install fmt glm entt glad soil2 sdl2
+```
 
 ---
 

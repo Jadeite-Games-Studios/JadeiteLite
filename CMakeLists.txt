@@ -45,7 +45,6 @@ find_package(glm CONFIG REQUIRED)
 find_package(soil2 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 find_package(SDL2 CONFIG REQUIRED)
-find_package(fmt CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
 
 add_subdirectory(pch)
