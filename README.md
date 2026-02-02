@@ -139,6 +139,20 @@ cmake -S . -B build
 This project is licensed under the JGS License.
 See the `LICENSE` file for details.
 
+## Third-Party Licenses
+---
+This project makes use of third-party libraries and components that are NOT covered by the Jadeite / JGS License.
+Each third-party dependency is licensed under its own respective license terms, which may differ from the license of this project.
+
+*Important Notice*
+
+- The Jadeite Lite source code is licensed under the JGS License.
+- Third-party libraries retain their original licenses.
+- Users are responsible for reviewing and complying with all applicable third-party license terms.
+
+Please refer to the license files provided by each dependency for full details.
+---
+
 ## 🙏 Acknowledgments
 This project would not be possible without the help of all the contributors, the motivation to keep working forward through the wonderful comments and supporters from my YouTube Channel. 
 Also from all the wonderful open source projects that I have been able to use in the creation of this project.
