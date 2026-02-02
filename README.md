@@ -164,9 +164,12 @@ Check out these amazing open source projects that we are using in the engine. Ma
 -   **[SDL2](https://github.com/libsdl-org/SDL)** -  a cross-platform library that provides an abstraction layer for computer multimedia hardware components.
 -   **[SDL_mixer](https://github.com/libsdl-org/SDL_mixer)** - An audio mixer that supports various file formats for Simple Directmedia Layer.
 -   **[Dear ImGui](https://github.com/ocornut/imgui)** - Immediate mode GUI for C++.
+-   **[ImGuiFileDialog](https://github.com/aiekick/ImGuiFileDialog)** - Full featured file Dialog for Dear ImGui.
 -   **[GLM](https://github.com/g-truc/glm)** - Mathematics library for graphics software.
 -   **[stb](https://github.com/nothings/stb)** - Single-file public domain libraries.
--   **[FMT](https://github.com/fmtlib/fmt)** - A modern formatting library
+-   **[SOIL2](https://github.com/SpartanJ/SOIL2) - SOIL2 is a tiny C library used primarily for uploading textures into OpenGL.
+-   **[FMT](https://github.com/fmtlib/fmt)** - A modern formatting library.
+-   **[Glad](https://github.com/Dav1dde/glad)** - Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
 
 _Thank you to all the contributors and maintainers of these projects!_ ❤️
 
