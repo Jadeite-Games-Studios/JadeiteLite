@@ -167,7 +167,7 @@ Check out these amazing open source projects that we are using in the engine. Ma
 -   **[ImGuiFileDialog](https://github.com/aiekick/ImGuiFileDialog)** - Full featured file Dialog for Dear ImGui.
 -   **[GLM](https://github.com/g-truc/glm)** - Mathematics library for graphics software.
 -   **[stb](https://github.com/nothings/stb)** - Single-file public domain libraries.
--   **[SOIL2](https://github.com/SpartanJ/SOIL2) - SOIL2 is a tiny C library used primarily for uploading textures into OpenGL.
+-   **[SOIL2](https://github.com/SpartanJ/SOIL2)** - SOIL2 is a tiny C library used primarily for uploading textures into OpenGL.
 -   **[FMT](https://github.com/fmtlib/fmt)** - A modern formatting library.
 -   **[Glad](https://github.com/Dav1dde/glad)** - Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
 
