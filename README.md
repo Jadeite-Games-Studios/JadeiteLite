@@ -92,10 +92,13 @@ Jadeite Starter is used as the foundation for tutorials covering topics such as:
 ----
 Requires [CMake 3.26](https://cmake.org/) and [vcpkg](https://github.com/microsoft/vcpkg)
 ## Get VCPKG:
+
 ```ps
 git clone https://github.com/microsoft/vcpkg
-./vcpkg/bootstrap-vcpkg.bat -disableMetrics
+cd vcpkg
+bootstrap-vcpkg.bat -disableMetrics
 ```
+
 ### Make sure the following environment variables are set:
 - Windows
 ```
@@ -122,6 +125,12 @@ source ~/.bashrc
 ```
 vcpkg install fmt glm entt glad soil2 sdl2
 ```
+## Clone the repository 
+```
+git clone https://github.com/dwjclark11/Scion2D.git
+cd Scion2D
+cmake -S . -B build
+```
 
 ---
 
@@ -129,3 +138,21 @@ vcpkg install fmt glm entt glad soil2 sdl2
 
 This project is licensed under the JGS License.
 See the `LICENSE` file for details.
+
+## 🙏 Acknowledgments
+This project would not be possible without the help of all the contributors, the motivation to keep working forward through the wonderful comments and supporters from my YouTube Channel. 
+Also from all the wonderful open source projects that I have been able to use in the creation of this project.
+
+### Open Source Dependencies
+Check out these amazing open source projects that we are using in the engine. Make sure to give them all a star! for all of their amazing work.
+
+-   **[EnTT](https://github.com/skypjack/entt)** - Fast and reliable Entity Component System.
+-   **[SDL2](https://github.com/libsdl-org/SDL)** -  a cross-platform library that provides an abstraction layer for computer multimedia hardware components.
+-   **[SDL_mixer](https://github.com/libsdl-org/SDL_mixer)** - An audio mixer that supports various file formats for Simple Directmedia Layer.
+-   **[Dear ImGui](https://github.com/ocornut/imgui)** - Immediate mode GUI for C++.
+-   **[GLM](https://github.com/g-truc/glm)** - Mathematics library for graphics software.
+-   **[stb](https://github.com/nothings/stb)** - Single-file public domain libraries.
+-   **[FMT](https://github.com/fmtlib/fmt)** - A modern formatting library
+
+_Thank you to all the contributors and maintainers of these projects!_ ❤️
+
