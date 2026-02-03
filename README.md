@@ -93,10 +93,13 @@ Jadeite Starter is used as the foundation for tutorials covering topics such as:
 Requires [CMake 3.26](https://cmake.org/) and [vcpkg](https://github.com/microsoft/vcpkg)
 ## Get VCPKG:
 
-```ps
+```bash
 git clone https://github.com/microsoft/vcpkg
 cd vcpkg
 bootstrap-vcpkg.bat -disableMetrics
+
+# Use this for linux
+# bootstrap-vcpkg.sh -disableMetrics 
 ```
 
 ### Make sure the following environment variables are set:
@@ -120,6 +123,14 @@ Apply changes:
 ```
 source ~/.bashrc
 ```
+
+- Debian/Ubuntu
+  - There may be some system dependencies necessary to build SDL2
+```bash
+sudo apt-get install build-essential cmake pkg-config libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
+```
+
+---
 
 ## Install Dependencies
 ```
