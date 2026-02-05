@@ -15,7 +15,7 @@
 #include "core/events/event_dispatcher.hpp"
 #include "core/events/event_types.hpp"
 
-// ECS 
+// ECS
 #include "core/ecs/main_registry.hpp"
 
 #include <glad/glad.h>
@@ -66,7 +66,7 @@ bool Application::Initialize()
     JADE_INIT_LOGS( bConsoleLog, true );
 
     // Init SDL
-    if ( SDL_Init( SDL_INIT_EVERYTHING ) != 0 )
+    if ( !SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO ) )
     {
         std::string error = SDL_GetError();
         JADE_ERROR( "Failed to initialize SDL: {}", error );
@@ -74,7 +74,7 @@ bool Application::Initialize()
     }
 
     // Set up OpenGL
-    if ( SDL_GL_LoadLibrary( NULL ) != 0 )
+    if ( !SDL_GL_LoadLibrary( NULL ) )
     {
         std::string error = SDL_GetError();
         JADE_ERROR( "Failed to Open GL Library: {0}", error );
@@ -95,7 +95,7 @@ bool Application::Initialize()
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
     SDL_GL_SetAttribute( SDL_GL_ACCELERATED_VISUAL, 1 );
 
-    m_pWindow = std::make_unique<Windowing::Window>( "Jadeite Lite", 1920, 1080, 0, 0, true,
+    m_pWindow = std::make_unique<Windowing::Window>( "Jadeite Lite", 1920, 1080, true,
                                                      SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE );
 
     if ( !m_pWindow->GetWindow() )
@@ -108,10 +108,10 @@ bool Application::Initialize()
     m_pWindow->SetGLContext( SDL_GL_CreateContext( m_pWindow->GetWindow().get() ) );
 
     // Initialize Glad
-    if ( gladLoadGLLoader( SDL_GL_GetProcAddress ) == 0 )
+    if ( !gladLoadGLLoader( (GLADloadproc) SDL_GL_GetProcAddress ) )
     {
-        JADE_ERROR( "Failed to Initialize Glad" );
-        return false;
+        JADE_ERROR( "Failed to initialize GLAD" );
+        return 1;
     }
 
     if ( !m_pWindow->GetGLContext() )
@@ -121,14 +121,14 @@ bool Application::Initialize()
         return false;
     }
 
-    if ( ( SDL_GL_MakeCurrent( m_pWindow->GetWindow().get(), m_pWindow->GetGLContext() ) ) != 0 )
+    if ( ( !SDL_GL_MakeCurrent( m_pWindow->GetWindow().get(), m_pWindow->GetGLContext() ) ) )
     {
         std::string error = SDL_GetError();
         JADE_ERROR( "Failed to make OpenGL context current: {0}", error );
         return false;
     }
 
-    if ( SDL_GL_SetSwapInterval( 1 ) < 0 )
+    if ( !SDL_GL_SetSwapInterval( 1 ) )
     {
         JADE_WARN( "Unable to set VSync. SDL ERROR: {}", SDL_GetError() );
     }
@@ -142,7 +142,7 @@ bool Application::Initialize()
     m_pRegistry->ctx().emplace<SharedDockableWindowHolder>(
         std::make_shared<DockableWindowHolder>() );
 
-    if (!CreateImGuiWindows())
+    if ( !CreateImGuiWindows() )
     {
         JADE_ERROR( "Failed to create imgui windows" );
         return false;
@@ -168,7 +168,6 @@ void Application::InitImGuiWindows()
     {
         firstTime = false;
 
-        
         ImGui::DockBuilderRemoveNode( dockSpaceId );
         ImGui::DockBuilderAddNode( dockSpaceId );
 
@@ -186,9 +185,9 @@ void Application::InitImGuiWindows()
 bool Application::CreateImGuiWindows()
 {
     auto& pDockableWindows = m_pRegistry->ctx().get<SharedDockableWindowHolder>();
-    pDockableWindows->windows.emplace_back( std::make_unique<MenuWindow>(*m_pMainRegistry) );
-    pDockableWindows->windows.emplace_back( std::make_unique<SceneWindow>(*m_pMainRegistry) );
-    pDockableWindows->windows.emplace_back( std::make_unique<LogWindow>( ) );
+    pDockableWindows->windows.emplace_back( std::make_unique<MenuWindow>( *m_pMainRegistry ) );
+    pDockableWindows->windows.emplace_back( std::make_unique<SceneWindow>( *m_pMainRegistry ) );
+    pDockableWindows->windows.emplace_back( std::make_unique<LogWindow>() );
 
     return true;
 }
@@ -205,7 +204,7 @@ void Application::RenderImGuiWindows()
     }
 
     // Uncomment to see ImGui Demo
-    //Gui::ShowImGuiDemo();
+    // Gui::ShowImGuiDemo();
 }
 
 void Application::ProcessEvents()
@@ -215,48 +214,42 @@ void Application::ProcessEvents()
     {
         switch ( m_Event.type )
         {
-        case SDL_QUIT:
+        case SDL_EVENT_QUIT:
             m_bRunning = false;
             break;
-        case SDL_KEYDOWN:
+        case SDL_EVENT_KEY_DOWN:
             break;
-        case SDL_KEYUP:
+        case SDL_EVENT_KEY_UP:
             break;
-        case SDL_MOUSEBUTTONDOWN:
+        case SDL_EVENT_MOUSE_BUTTON_DOWN:
             break;
-        case SDL_MOUSEBUTTONUP:
+        case SDL_EVENT_MOUSE_BUTTON_UP:
             break;
-        case SDL_MOUSEWHEEL:
+        case SDL_EVENT_MOUSE_WHEEL:
             break;
-        case SDL_MOUSEMOTION:
+        case SDL_EVENT_MOUSE_MOTION:
             break;
-        case SDL_CONTROLLERBUTTONDOWN:
+        case SDL_EVENT_GAMEPAD_BUTTON_DOWN:
             break;
-        case SDL_CONTROLLERBUTTONUP:
+        case SDL_EVENT_GAMEPAD_BUTTON_UP:
             break;
-        case SDL_CONTROLLERDEVICEADDED:
+        case SDL_EVENT_GAMEPAD_ADDED:
             break;
-        case SDL_CONTROLLERDEVICEREMOVED:
+        case SDL_EVENT_GAMEPAD_REMOVED:
             break;
-        case SDL_JOYAXISMOTION:
+        case SDL_EVENT_JOYSTICK_AXIS_MOTION:
             break;
-        case SDL_JOYHATMOTION:
+        case SDL_EVENT_JOYSTICK_HAT_MOTION:
             break;
-        case SDL_WINDOWEVENT: {
-            switch ( m_Event.window.event )
+
+        case SDL_EVENT_WINDOW_RESIZED:
+            if ( SDL_GetWindowID( m_pWindow->GetWindow().get() ) == m_Event.window.windowID )
             {
-            case SDL_WINDOWEVENT_SIZE_CHANGED:
-                if ( SDL_GetWindowID( m_pWindow->GetWindow().get() ) == m_Event.window.windowID )
-                {
-                    m_pWindow->SetSize( m_Event.window.data1, m_Event.window.data2 );
-                }
-                break;
-            default:
-                break;
+                m_pWindow->SetSize( m_Event.window.data1, m_Event.window.data2 );
             }
             break;
-        }
-        case SDL_DROPFILE: {
+
+        case SDL_EVENT_DROP_FILE: {
             break;
         }
         default:
@@ -286,9 +279,9 @@ void Application::Render()
 void Application::CleanUp()
 {
     // TODO: Fonts are destroyed after global fonts map destroyed
-    //Gui::CleanUp(); 
+    // Gui::CleanUp();
 
-    SDL_GL_DeleteContext( m_pWindow->GetGLContext() );
+    SDL_GL_DestroyContext( m_pWindow->GetGLContext() );
     SDL_DestroyWindow( m_pWindow->GetWindow().get() );
     SDL_Quit();
 }

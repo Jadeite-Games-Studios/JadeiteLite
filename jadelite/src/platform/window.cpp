@@ -4,19 +4,18 @@
 namespace Jadeite::Windowing
 {
 Window::Window()
-    : Window( "default_window", 640, 480, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, true, NULL )
+    : Window( "default_window", 640, 480, true, NULL )
 {
 }
 
-Window::Window( const std::string& title, int width, int height, int x_pos, int y_pos, bool v_sync,
-                Uint32 flags )
+Window::Window( const std::string& title, int width, int height, bool v_sync, Uint32 flags )
     : m_pWindow{ nullptr }
     , m_GLContext{}
     , m_sTitle{ title }
     , m_Width{ width }
     , m_Height{ height }
-    , m_XPos{ x_pos }
-    , m_YPos{ y_pos }
+    , m_XPos{ 0 }
+    , m_YPos{ 0 }
     , m_WindowFlags{ flags }
 {
     CreateNewWindow( flags );
@@ -29,11 +28,11 @@ Window::Window( const std::string& title, int width, int height, int x_pos, int 
     }
 
     JADE_LOG( "Window Created Successfully!" );
+    SDL_GetWindowPosition( m_pWindow.get(), &m_XPos, &m_YPos );
 }
 
 Window::~Window()
 {
-
 }
 
 void Window::SetPosition( int x, int y )
@@ -58,8 +57,7 @@ void Window::SetWindowTitle( const std::string& name )
 
 void Window::CreateNewWindow( Uint32 flags )
 {
-    m_pWindow =
-        WindowPtr( SDL_CreateWindow( m_sTitle.c_str(), m_XPos, m_YPos, m_Width, m_Height, flags ) );
+    m_pWindow = WindowPtr( SDL_CreateWindow( m_sTitle.c_str(), m_Width, m_Height, flags ) );
 
     // Check to see if the window was created correctly
     if ( !m_pWindow )

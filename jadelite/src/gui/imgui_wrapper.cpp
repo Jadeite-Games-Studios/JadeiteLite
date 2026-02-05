@@ -8,13 +8,13 @@
 #include "utilities/fonts/IconsFontAwesome5.hpp"
 
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_opengl.h>
 #include <imgui.h>
 #include <imgui_internal.h>
-#include <imgui_impl_sdl2.h>
+#include <imgui_impl_sdl3.h>
 #include <imgui_impl_opengl3.h>
-#include <SDL_opengl.h>
-// ===================================
+
 
 namespace Jadeite
 {
@@ -56,9 +56,9 @@ bool Gui::InitImGui( Windowing::Window* pWindow )
     io.Fonts->AddFontFromMemoryTTF( Fonts::g_FaSolid900, Fonts::g_FaSolid900Size, baseFontSize,
                                     &icons_config, icons_ranges );
 
-    if ( !ImGui_ImplSDL2_InitForOpenGL( pWindow->GetWindow().get(), pWindow->GetGLContext() ) )
+    if ( !ImGui_ImplSDL3_InitForOpenGL( pWindow->GetWindow().get(), pWindow->GetGLContext() ) )
     {
-        JADE_ERROR( "Failed to intialize ImGui SDL2 for OpenGL!" );
+        JADE_ERROR( "Failed to intialize ImGui SDL3 for OpenGL!" );
         return false;
     }
 
@@ -75,7 +75,7 @@ bool Gui::InitImGui( Windowing::Window* pWindow )
 void Gui::Begin()
 {
     ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplSDL2_NewFrame();
+    ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
 }
 
@@ -97,7 +97,7 @@ void Gui::End( Windowing::Window* pWindow )
 
 void Gui::ProcessEvent( const SDL_Event* event )
 {
-    ImGui_ImplSDL2_ProcessEvent( event );
+    ImGui_ImplSDL3_ProcessEvent( event );
 }
 
 void Gui::ShowImGuiDemo()
@@ -108,7 +108,7 @@ void Gui::ShowImGuiDemo()
 void Gui::CleanUp()
 {
     ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplSDL2_Shutdown();
+    ImGui_ImplSDL3_Shutdown();
     ImGui::DestroyContext();
 }
 

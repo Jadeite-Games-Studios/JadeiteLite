@@ -7,8 +7,7 @@ class Window
 {
 public:
     Window();
-    Window( const std::string& title, int width, int height, int x_pos, int y_pos,
-            bool v_sync = true,
+    Window( const std::string& title, int width, int height, bool v_sync = true,
             Uint32 flags = ( SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
                              | SDL_WINDOW_MOUSE_CAPTURE ) );
     ~Window();

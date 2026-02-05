@@ -79,7 +79,7 @@ void MenuWindow::Draw()
             {
                 ImGui::Separator();
                 ImGui::Text(
-                    "Jadeite Lite is a simple SDL2 and ImGui application written in C++." );
+                    "Jadeite Lite is a simple SDL3 and ImGui application written in C++." );
                 ImGui::Text(
                     "The goal of this is to handle basic boiler plater code for applications to "
                     "expand as needed to teach new topics and learn more about C++ "

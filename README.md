@@ -42,7 +42,7 @@ Those systems are introduced incrementally per tutorial.
 ## Included Systems
 
 ### Core
-- SDL2 window and context creation
+- SDL3 window and context creation
 - Application lifecycle and main loop
 - Platform-independent project structure
 
@@ -125,7 +125,7 @@ source ~/.bashrc
 ```
 
 - Debian/Ubuntu
-  - There may be some system dependencies necessary to build SDL2
+  - There may be some system dependencies necessary to build SDL3
 ```bash
 sudo apt-get install build-essential cmake pkg-config libxinerama-dev libxcursor-dev xorg-dev libglu1-mesa-dev
 ```
@@ -134,11 +134,11 @@ sudo apt-get install build-essential cmake pkg-config libxinerama-dev libxcursor
 
 ## Install Dependencies
 ```
-vcpkg install fmt glm entt glad soil2 sdl2
+vcpkg install fmt glm entt glad soil2 sdl3
 ```
 ## Clone the repository 
 ```
-git clone https://github.com/dwjclark11/Scion2D.git
+git clone -b SDL3-Migraton --single-branch https://github.com/Jadeite-Games-Studios/JadeiteLite.git
 cd Scion2D
 cmake -S . -B build
 ```
@@ -172,7 +172,7 @@ Also from all the wonderful open source projects that I have been able to use in
 Check out these amazing open source projects that we are using in the engine. Make sure to give them all a star! for all of their amazing work.
 
 -   **[EnTT](https://github.com/skypjack/entt)** - Fast and reliable Entity Component System.
--   **[SDL2](https://github.com/libsdl-org/SDL)** -  a cross-platform library that provides an abstraction layer for computer multimedia hardware components.
+-   **[SDL3](https://github.com/libsdl-org/SDL)** -  a cross-platform library that provides an abstraction layer for computer multimedia hardware components.
 -   **[SDL_mixer](https://github.com/libsdl-org/SDL_mixer)** - An audio mixer that supports various file formats for Simple Directmedia Layer.
 -   **[Dear ImGui](https://github.com/ocornut/imgui)** - Immediate mode GUI for C++.
 -   **[ImGuiFileDialog](https://github.com/aiekick/ImGuiFileDialog)** - Full featured file Dialog for Dear ImGui.
