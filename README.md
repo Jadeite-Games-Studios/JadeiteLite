@@ -139,7 +139,7 @@ vcpkg install fmt glm entt glad soil2 sdl3
 ## Clone the repository 
 ```
 git clone -b SDL3-Migraton --single-branch https://github.com/Jadeite-Games-Studios/JadeiteLite.git
-cd Scion2D
+cd JadeiteLite
 cmake -S . -B build
 ```
 
