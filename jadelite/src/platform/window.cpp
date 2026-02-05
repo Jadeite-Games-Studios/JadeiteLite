@@ -4,7 +4,7 @@
 namespace Jadeite::Windowing
 {
 Window::Window()
-    : Window( "default_window", 640, 480, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, true, NULL )
+    : Window( "default_window", 640, 480, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, true )
 {
 }
 
