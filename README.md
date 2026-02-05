@@ -139,7 +139,7 @@ vcpkg install fmt glm entt glad soil2 sdl2
 ## Clone the repository 
 ```
 git clone https://github.com/dwjclark11/Scion2D.git
-cd Scion2D
+cd JadeiteLite
 cmake -S . -B build
 ```
 
